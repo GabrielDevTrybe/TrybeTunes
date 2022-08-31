@@ -12,16 +12,16 @@ class Login extends React.Component {
     redirect: false,
   };
 
-  funcButtonValue = (event) => {
-    const { name } = this.state;
-    const maxnLenghth = 2;
+  funcButtonValue = ({ target }) => {
+    const { value } = target;
+    const maxnLenghth = 3;
 
-    this.setState({ name: event.target.value });
-    if (name.length >= maxnLenghth) {
+    this.setState({ name: value });
+    if (value.length >= maxnLenghth) {
       this.setState({
         submitDisable: false,
       });
-    } else if (name.length < maxnLenghth) {
+    } else if (value.length < maxnLenghth) {
       this.setState({
         submitDisable: true,
       });
