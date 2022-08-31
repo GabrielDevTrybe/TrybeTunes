@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+// import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends React.Component {
   state = {
@@ -7,12 +8,12 @@ class Search extends React.Component {
     searchValue: '',
   };
 
-  botaoDisableFunc = (event) => {
-    const { searchValue } = this.state;
-    const maxLength = 1;
+  botaoDisableFunc = ({ target }) => {
+    const { value } = target;
+    const maxLength = 2;
 
-    this.setState({ searchValue: event.target.value });
-    if (searchValue.length >= maxLength) {
+    this.setState({ searchValue: value });
+    if (value.length >= maxLength) {
       this.setState({ botaoOff: false });
     } else {
       this.setState({ botaoOff: true });
@@ -20,7 +21,7 @@ class Search extends React.Component {
   };
 
   render() {
-    const { botaoOff } = this.state;
+    const { botaoOff, searchValue } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
@@ -30,6 +31,7 @@ class Search extends React.Component {
             type="text"
             placeholder="search"
             data-testid="search-artist-input"
+            value={ searchValue }
           />
           <button
             type="button"
