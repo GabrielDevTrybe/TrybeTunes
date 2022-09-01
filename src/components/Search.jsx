@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-// import Card from './Card';
+import Card from './Card';
 import Carregando from './Carregando';
 
 class Search extends React.Component {
   state = {
     botaoOff: true,
     searchValue: '',
+    searchValueCopia: '',
     isLoading: false,
     musicArr: [],
     message: false,
@@ -18,6 +19,8 @@ class Search extends React.Component {
     const maxLength = 2;
 
     this.setState({ searchValue: value });
+    this.setState({ searchValueCopia: value });
+
     if (value.length >= maxLength) {
       this.setState({ botaoOff: false });
     } else {
@@ -39,7 +42,9 @@ class Search extends React.Component {
   };
 
   render() {
-    const { botaoOff, searchValue, musicArr, isLoading, message } = this.state;
+    const {
+      botaoOff,
+      searchValue, musicArr, isLoading, message, searchValueCopia } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
@@ -74,11 +79,15 @@ class Search extends React.Component {
             <span>
               Resultado de álbuns de:
               {' '}
-              {searchValue}
+              {searchValueCopia}
+              { /* tive uma ajuda do Arthur Debiasi pra essa questao */ }
+
               {' '}
             </span>
           )
         }
+
+        <Card musicArr={ musicArr } />
       </div>
 
     );
