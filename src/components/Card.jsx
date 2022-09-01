@@ -9,9 +9,9 @@ class Card extends React.Component {
       return <p>Nenhum álbum foi encontrado</p>;
     }
     return (
-      musicArr.map((elemento, index) => (
+      musicArr.map((elemento) => (
         <Link
-          key={ index }
+          key={ elemento.collectionId }
           to={ `/album/${elemento.collectionId}` }
           data-testid={ `link-to-album-${elemento.collectionId}` }
         >
