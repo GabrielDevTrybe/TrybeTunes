@@ -28,6 +28,7 @@ class Album extends React.Component {
       favoriteArr: favorites,
       isLoading: false,
     });
+    console.log(this);
   };
 
   render() {
